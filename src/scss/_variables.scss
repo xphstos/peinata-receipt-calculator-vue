@@ -1,0 +1,29 @@
+$mainColor: hsl(354, 100%, 60%);
+
+$colors: (
+    "accent": $mainColor,
+    "appBackground": change-color($mainColor, $lightness: 98%),
+    "dashColor": change-color($mainColor, $saturation: 0%, $lightness: 90%),
+    "background": change-color($mainColor, $saturation: 0%, $lightness: 100%),
+    "textColor": change-color($mainColor, $lightness: 10%)
+);
+
+$darkColors: (
+    "accent": $mainColor,
+    "appBackground": change-color($mainColor, $lightness: 0%),
+    "dashColor": change-color($mainColor, $saturation: 0%, $lightness: 16%),
+    "background": change-color($mainColor,  $saturation: 0%, $lightness: 8%),
+    "textColor": change-color($mainColor, $lightness: 100%)
+);
+
+.app {
+   	@each $name, $color in $colors {
+		--#{$name}: #{$color};
+    }
+    
+    &.app--dark {
+        @each $name, $color in $darkColors {
+		    --#{$name}: #{$color};
+        }
+    }
+}
